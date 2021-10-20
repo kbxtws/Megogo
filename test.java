@@ -32,8 +32,6 @@ public class test {
     @Test
     public void exam1(){
         search = driver.findElement(By.name("q"));
-
-        button.click();
         search.sendKeys("Моана", Keys.ENTER);
 
         film = (new WebDriverWait(driver, Duration.ofSeconds(18)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title = 'Моана']"))));
@@ -46,11 +44,13 @@ public class test {
         search = driver.findElement(By.name("q"));
 
         button.click();
-        search.sendKeys("Моана");
+        search.sendKeys("Моана", Keys.ENTER);
 
-        film = (new WebDriverWait(driver, Duration.ofSeconds(18)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title = 'Моана']"))));
+        film = (new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title = 'Моана']"))));
 
         Assert.assertTrue(film.isDisplayed());
+
+        film.click();
     }
 
     @Test
@@ -58,34 +58,19 @@ public class test {
         search = driver.findElement(By.name("q"));
 
         button.click();
-        search.sendKeys("Моана", Keys.ENTER);
+        search.sendKeys("Моана");
 
-        film = (new WebDriverWait(driver, Duration.ofSeconds(18)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title = 'Моана']"))));
-        film.click();
+        film = (new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title = 'Моана']"))));
 
         Assert.assertTrue(film.isDisplayed());
 
+        film.click();
     }
 
     @Test
     public void exam4(){
         search = driver.findElement(By.name("q"));
-
-        button.click();
-        search.sendKeys("Моана");
-
-        film = (new WebDriverWait(driver, Duration.ofSeconds(18)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title = 'Моана']"))));
-        film.click();
-
-        Assert.assertTrue(film.isDisplayed());
-    }
-
-    @Test
-    public void exam5(){
-        search = driver.findElement(By.name("q"));
         close = driver.findElement(By.xpath("//button[@type='reset']"));
-
-        button.click();
         search.sendKeys("Моана");
         close.click();
     }
